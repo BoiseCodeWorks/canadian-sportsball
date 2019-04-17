@@ -44,18 +44,18 @@ namespace canadian_sportsball.Repositories
             }
         }
 
-        public Team EditTeam(int id, Team editedTeam)
+        public Team EditTeam(Team editedTeam)
         {
             try
             {
                 string query = @"
                 UPDATE teams SET
-                    name = @editedTeam.Name,
-                    mascot = @editedTeam.Mascot
+                    name = @Name,
+                    mascot = @Mascot
                 WHERE id = @id;
                 SELECT * FROM teams WHERE id = @id;
                 ";
-                return _db.QueryFirstOrDefault<Team>(query, new { id, editedTeam });
+                return _db.QueryFirstOrDefault<Team>(query, editedTeam );
             }
             catch (Exception e)
             {
