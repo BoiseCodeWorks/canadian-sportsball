@@ -52,6 +52,7 @@ namespace canadian_sportsball.Controllers
         [HttpPut("{id}")]
         public ActionResult<Player> Edit(int id, [FromBody] Player editedPlayer)
         {
+            editedPlayer.Id = id;
             Player updatedPlayer = _pr.EditPlayer(id, editedPlayer);
             if (updatedPlayer == null) { return BadRequest("haters gonna hate"); }
             return Ok(updatedPlayer);
