@@ -49,12 +49,12 @@ namespace canadian_sportsball.Repositories
             {
                 string query = @"
                 UPDATE players SET
-                    name = @editedPlayer.Name,
-                    teamId = @editedPlayer.TeamId
+                    name = @Name,
+                    teamId = @TeamId
                 WHERE id = @id;
                 SELECT * FROM players WHERE id = @id;
                 ";
-                return _db.QueryFirstOrDefault<Player>(query, new { id, editedPlayer });
+                return _db.QueryFirstOrDefault<Player>(query, editedPlayer );
             }
             catch (Exception e)
             {
